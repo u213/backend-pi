@@ -43,6 +43,6 @@ public class CuentaContable {
 		this.estructura = estructura;
 	}
 	
-	////
+	//////qqqqqqq//
 	
 }
