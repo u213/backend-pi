@@ -42,7 +42,6 @@ public class CuentaContable {
 	public void setEstructura(String estructura) {
 		this.estructura = estructura;
 	}
-	
-	
+	/////
 	
 }
