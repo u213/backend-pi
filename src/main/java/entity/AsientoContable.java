@@ -9,7 +9,7 @@ private Double haber;
 
 private CuentaContable idCuentaContable;
 private LibroRegistro idLibroRegistro;
-private Persona idPersona;
+private EntidadP idPersona;
 
 private String moneda;
 private String numero;
@@ -17,7 +17,7 @@ private String serie;
 
 
 public AsientoContable(String idAsientoContable, Double debe, String glosa, Double haber,
-		CuentaContable idCuentaContable, LibroRegistro idLibroRegistro, Persona idPersona, String moneda, String numero,
+		CuentaContable idCuentaContable, LibroRegistro idLibroRegistro, EntidadP idPersona, String moneda, String numero,
 		String serie) {
 	super();
 	this.idAsientoContable = idAsientoContable;
@@ -101,12 +101,12 @@ public void setIdLibroRegistro(LibroRegistro idLibroRegistro) {
 }
 
 
-public Persona getIdPersona() {
+public EntidadP getIdPersona() {
 	return idPersona;
 }
 
 
-public void setIdPersona(Persona idPersona) {
+public void setIdPersona(EntidadP idPersona) {
 	this.idPersona = idPersona;
 }
 

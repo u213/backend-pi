@@ -13,11 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 import entity.TipoDocumento;
 
 @Repository
-public interface RepositoryTipoDocumento extends JpaRepository<TipoDocumento, Integer>{
+public interface TipoDocumentoRepository extends JpaRepository<TipoDocumento, Integer>{
 	
 
 	@Query(value = "{call sp_TipoDocumento_listar()}", nativeQuery = true)
-	List<TipoDocumento> listaTipoDocumento();
+	List<TipoDocumento> listarTipoDocumento();
 	
 	
 	@Query(value = "{call sp_TipoDocumento_buscar_x_id(:_id)}", nativeQuery = true)
