@@ -53,13 +53,7 @@ public class AsientoController {
 	}
 	
 	
-	
-//	//@PreAuthorize("hasRole('ADMIN') or hasRole('ALMACEN')")
-//	@PutMapping("/editar")
-//	public ResponseEntity<?> editar(@RequestBody Asiento entidad){
-//		aass.editarAsiento(entidad);
-//		return new ResponseEntity<Object>(new Mensaje("Asiento editado"),HttpStatus.OK);
-//	} 
+
 //	
 //	//@PreAuthorize("hasRole('ADMIN')")
 //	@DeleteMapping("/eliminar/{id}")
@@ -78,7 +72,7 @@ public class AsientoController {
 	
 	
 	
-	@GetMapping("/autoupdate")
+	@GetMapping("/autosum")
 	public ResponseEntity< List<Asiento>> debehaber(){
 		List<Asiento> lista = aass.listaUpdate();
 		return new ResponseEntity<List<Asiento>>(lista,HttpStatus.OK);

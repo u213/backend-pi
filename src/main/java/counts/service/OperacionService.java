@@ -41,6 +41,16 @@ public class OperacionService {
 	}
 	
 	
+	public void editarOp(Operacion oper) {
+		oorr.editarOperacion(
+				  oper.getIdOperacion(),				  
+	              oper.getDebe(),
+	              oper.getHaber(),
+	     	      oper.getCuentaContable().getIdCuentaContable());
+	}
+	
+	
+	
 	
 	/*OBSOLETS*/
 //	public void guardarAsientoOperacion(Operacion operacion) {
@@ -56,19 +66,6 @@ public class OperacionService {
 //			               operacion.getHaber(),			               
 //			               operacion.getCuentaContable().getIdCuentaContable(),
 //			               _eleccion);}
-//
-//
-//	public void guardarOperacioness(Operacion operacion) {
-//		_eleccion=2;
-//	 oorr.guardarOperaciones(operacion.getAsientoId().getDocumentoComprobante(),
-//			               operacion.getAsientoId().getFecha(),
-//			               operacion.getAsientoId().getGlosa(),
-//			               operacion.getAsientoId().getLibroRegistro(),
-//			               operacion.getAsientoId().getLibroDiarioId(),
-//			               operacion.getCorrelacion(),
-//			               operacion.getDebe(),
-//			               operacion.getHaber(),
-//			               operacion.getCuentaContable(),
-//			               _eleccion);
-//	 }
+
 }
+

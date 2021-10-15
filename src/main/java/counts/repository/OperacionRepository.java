@@ -35,7 +35,15 @@ public interface OperacionRepository  extends JpaRepository<Operacion, Integer>{
 			         @Param("_cuentacontableid") Integer _cuentacontableid
 			         );
 	
-	
+	@Transactional
+	@Modifying
+	@Query(value = "{call sp_operation_save(:_id,:_debe,:_haber,:_cuentacontableid )}", nativeQuery = true)
+	void editarOperacion(
+			         @Param("_id") Integer _id,			         
+			         @Param("_debe") Double _debe,
+			         @Param("_haber") Double _haber,
+			         @Param("_cuentacontableid") Integer _cuentacontableid
+			         );
 	
 	
 	
