@@ -62,11 +62,8 @@ public class AsientoService {
 //	public List<Asiento> buscarPorProv(int proveedor_id){
 //		return aarr.buscarPorProv(proveedor_id);
 //	}
-//	
-//
-//	public List<Asiento> listarPorIdDeSubCategory(int subcategoria_id) {
-//		return aarr.listarPorIdDeSubCategoria( subcategoria_id);
-//	}
-//	
+	public List<Asiento> listaUpdate() {
+		return repoA.listaUpdate();
+	}
 	
 }

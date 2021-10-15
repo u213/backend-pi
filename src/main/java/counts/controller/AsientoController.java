@@ -76,19 +76,13 @@ public class AsientoController {
 	}
 
 	
-//	
-//	//@PreAuthorize("hasRole('ADMIN') or hasRole('ALMACEN')")
-//	@GetMapping("buscar-x-nombre/{nombre}")
-//	public ResponseEntity<Asiento> buscarPorNombre(@PathVariable("nombre")String _denominacion){
-//		Asiento entidad=aass.buscarPorX(_denominacion);
-//		return new ResponseEntity<Asiento>(entidad,HttpStatus.OK);
-//	}
-//	
-//	//@PreAuthorize("hasRole('ADMIN') or hasRole('ALMACEN')")
-//		@GetMapping("buscar-x-id-nombre/{busca}")
-//		public ResponseEntity<Asiento> buscarPorIdNomb(@PathVariable("busca")String busca){
-//			Asiento lista=aass.buscarPorcualquier(busca);
-//			return new ResponseEntity<Asiento>(lista,HttpStatus.OK);
-//		}
-		
+	
+	
+	@GetMapping("/autoupdate")
+	public ResponseEntity< List<Asiento>> debehaber(){
+		List<Asiento> lista = aass.listaUpdate();
+		return new ResponseEntity<List<Asiento>>(lista,HttpStatus.OK);
+	}
+	
+
 }

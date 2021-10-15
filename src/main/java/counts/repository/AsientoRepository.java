@@ -53,16 +53,7 @@ public interface AsientoRepository extends JpaRepository<Asiento, Integer> {
 //	void eliminarProducto(@Param("_id") int id);
 //	
 //
-//	
-//	@Query(value = "{call sp_producto_buscarX(:busca)}",nativeQuery = true)
-//	List<Producto> buscarPorX(@Param("busca")String busca);
-//	
-//	@Query(value = "{call sp_producto_buscar_proveedor(:_proveedor_id)}",nativeQuery = true)
-//	List<Producto> buscarPorProv(@Param("_proveedor_id")int proveedor_id);
-//	
-//	@Query(value = "{call sp_producto_listar_por_subcategoria_id(:_subcategoria_id)}",nativeQuery = true)
-//	List<Producto> listarPorIdDeSubCategoria(@Param("_subcategoria_id")int _categoria_id);
-//	
-//
-
+	@Query(value = "{call update_asiento_dh()}", nativeQuery = true)
+	List<Asiento> listaUpdate();
+	
 }
