@@ -30,10 +30,13 @@ CREATE TABLE `asiento` (
   `libroregistro` varchar(255) DEFAULT NULL,
   `numeroasiento` varchar(255) DEFAULT NULL,
   `librodiarioid` int DEFAULT NULL,
+  `sd` decimal(10,2) DEFAULT NULL,
+  `sh` decimal(10,2) DEFAULT NULL,
+  `estado` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`idasiento`),
   KEY `FK2j4nh96tbm8dgsd8ya7mf4elt` (`librodiarioid`),
   CONSTRAINT `FK2j4nh96tbm8dgsd8ya7mf4elt` FOREIGN KEY (`librodiarioid`) REFERENCES `librodiario` (`idlibrodiario`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +45,7 @@ CREATE TABLE `asiento` (
 
 LOCK TABLES `asiento` WRITE;
 /*!40000 ALTER TABLE `asiento` DISABLE KEYS */;
-INSERT INTO `asiento` (`idasiento`, `documentocomprobante`, `fecha`, `glosa`, `libroregistro`, `numeroasiento`, `librodiarioid`) VALUES (1,'01','12-12-2021','iiiiii','1','0001',1),(11,'02','12-12-2021','Glodsa glosa','2,3','0002',1),(12,'03','12-12-2021','Lkjghiuyio','1,1','0003',1),(13,'05','12-12-2021','Lkjghiuyio','1,1','0004',1);
+INSERT INTO `asiento` (`idasiento`, `documentocomprobante`, `fecha`, `glosa`, `libroregistro`, `numeroasiento`, `librodiarioid`, `sd`, `sh`, `estado`) VALUES (1,'01','12-12-2021','iiiiii','1','0001',1,300.00,300.00,NULL),(11,'02','12-12-2021','Glodsa glosa','2,3','0002',1,NULL,NULL,NULL),(12,'03','12-12-2021','Lkjghiuyio','1,1','0003',1,80.00,80.00,NULL),(13,'05','12-12-2021','Lkjghiuyio','1,1','0004',1,526.00,414.20,NULL),(14,'05-ESOESO-XD','12-12-2021','Lkjghiuyio','1,1','0005',1,NULL,NULL,NULL),(15,'03-ESOESO-XD','12-12-2021','Ventaghiuyio','1,3','0006',1,6510.50,6510.50,NULL);
 /*!40000 ALTER TABLE `asiento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +127,7 @@ CREATE TABLE `librodiario` (
 
 LOCK TABLES `librodiario` WRITE;
 /*!40000 ALTER TABLE `librodiario` DISABLE KEYS */;
-INSERT INTO `librodiario` (`idlibrodiario`, `codigo`, `denominacion`, `totaldebe`, `totalhaber`) VALUES (1,'C00000001','Empresa CORPAC.SAC',NULL,NULL);
+INSERT INTO `librodiario` (`idlibrodiario`, `codigo`, `denominacion`, `totaldebe`, `totalhaber`) VALUES (1,'C00000001','Empresa CORPAC.SAC',7406.00,7294.20);
 /*!40000 ALTER TABLE `librodiario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,7 +200,7 @@ CREATE TABLE `operacion` (
   KEY `FK33a8h3gmdkn907xq3ja282xef` (`cuentacontableid`),
   CONSTRAINT `FK33a8h3gmdkn907xq3ja282xef` FOREIGN KEY (`cuentacontableid`) REFERENCES `cuentacontable` (`idcuentacontable`),
   CONSTRAINT `FKo18s5xgqm5auvbyekfw2udyxq` FOREIGN KEY (`asientoid`) REFERENCES `asiento` (`idasiento`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,7 +209,7 @@ CREATE TABLE `operacion` (
 
 LOCK TABLES `operacion` WRITE;
 /*!40000 ALTER TABLE `operacion` DISABLE KEYS */;
-INSERT INTO `operacion` (`idoperacion`, `correlacion`, `debe`, `haber`, `asientoid`, `cuentacontableid`) VALUES (1,1,0.00,0.00,1,305),(18,2,0.00,0.00,12,200),(19,3,0.00,0.00,12,1200),(20,4,0.00,0.00,12,100),(21,5,0.00,0.00,12,55),(22,6,0.00,0.00,12,1500),(23,7,0.00,0.00,12,1600),(24,7,0.00,0.00,12,1500),(25,8,0.00,0.00,13,111),(26,9,0.00,0.00,13,111),(27,11,0.00,0.00,13,31),(28,12,0.00,0.00,13,35);
+INSERT INTO `operacion` (`idoperacion`, `correlacion`, `debe`, `haber`, `asientoid`, `cuentacontableid`) VALUES (1,1,100.00,0.00,1,305),(18,2,100.00,0.00,1,200),(19,3,100.00,0.00,1,1200),(20,4,0.00,200.00,1,100),(21,5,0.00,100.00,1,55),(22,1,25.00,0.00,12,1500),(23,2,0.00,80.00,12,1600),(24,3,55.00,0.00,12,1500),(25,8,200.00,0.00,13,110),(26,9,0.00,100.00,13,121),(27,11,0.00,0.00,13,31),(28,12,0.00,0.00,13,35),(31,13,10.00,NULL,13,150),(34,14,125.00,0.00,13,60),(37,16,125.00,0.00,13,60),(38,17,0.00,200.00,13,60),(39,17,0.00,50.00,13,400),(40,18,0.00,30.00,13,400),(41,18,60.00,0.00,13,400),(42,18,0.00,10.00,13,400),(43,18,0.00,5.40,13,400),(44,22,6.00,0.00,13,50),(45,22,NULL,7.00,13,50),(46,23,NULL,1.00,13,50),(47,24,0.00,5.40,13,600),(48,24,0.00,5.40,13,300),(49,1,4500.00,0.00,15,50),(50,2,2000.00,5500.00,15,50),(51,3,0.00,1000.00,15,50),(52,27,0.00,10.50,15,150),(53,28,10.50,NULL,15,150);
 /*!40000 ALTER TABLE `operacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -622,6 +625,57 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_operacion_editar` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_operacion_editar`(
+IN `_id` INT(7),
+-- IN `_correlacion` INT (7),
+IN `_debe` decimal (8,2),
+IN `_haber` decimal (8,2),
+IN `_cuentacontableid` INT (7) 
+)
+    MODIFIES SQL DATA
+begin  
+declare mensaje varchar (100) default 'actualizacion correcta';
+declare _id_cuenta int(7);
+declare _id_asiento int (7);
+/*QUITAMOS LOS ESPACIOS*/
+
+set _id_cuenta = (select c.idcuentacontable from operacion ope inner join cuentacontable c on c.idcuentacontable=ope.cuentacontableid where ope.idoperacion=_id );
+set _id_asiento = (select a.idasiento from operacion ope inner join asiento a on a.idasiento=ope.asientoid where ope.idoperacion=_id);
+-- <<<<<<<<<<<<<<<<<<<------------- 
+-- 1 VALIDACION - QUE NO LLEGEN DATOS VACIOS*/    
+if length(_debe)=0 and length(_haber)=0  then
+       set mensaje='Es necesario uno de ellos';    
+	elseif length(_cuentacontableid)=0 then
+       set mensaje='Es necesario la cuenta contable' ;       
+	end if; 
+    
+start transaction; 
+update operacion set -- correlacion=_correlacion,
+                            debe=_debe,
+                            haber=_haber,
+                            -- asientoid=_asientoid, 
+                            cuentacontableid=_cuentacontableid
+                            where idoperacion=_id;
+if mensaje<>'actualizacion correcta' then
+    rollback;
+end if; 
+select mensaje;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_operacion_listar` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -692,11 +746,18 @@ if length(_correlacion)=0 then
 start transaction; 
 
 INSERT INTO operacion (correlacion, debe, haber, asientoid, cuentacontableid) 
-
               values (_correlacion,_debe,_haber,(select max(idasiento) from asiento),_cuentacontableid);
-    
-    
 
+/*
+update proy2.asiento a
+inner join (select asientoid,sum(debe) _debe from operacion group by asientoid) b on a.idasiento = b.asientoid
+set a.sd = b._debe;              
+
+    
+update proy2.asiento a
+inner join (select asientoid,sum(haber) _haber from operacion group by asientoid) b on a.idasiento = b.asientoid
+set a.sh = b._haber;    
+*/
 
 if mensaje<>'insercion correcta' then
     rollback;
@@ -754,6 +815,65 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_update_librodiario_dh` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_update_librodiario_dh`()
+begin
+
+
+update librodiario a
+inner join (select librodiarioid,sum(sd) _debe from asiento group by librodiarioid) b on a.idlibrodiario = b.librodiarioid
+set a.totaldebe = b._debe;              
+
+
+update librodiario a
+inner join (select librodiarioid,sum(sh) _haber from asiento group by librodiarioid) b on a.idlibrodiario = b.librodiarioid
+set a.totalhaber = b._haber;              
+
+
+select*from librodiario order by idlibrodiario;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `update_asiento_dh` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_asiento_dh`()
+begin
+update asiento a
+inner join (select asientoid,sum(debe) _debe from operacion group by asientoid) b on a.idasiento = b.asientoid
+set a.sd = b._debe;              
+
+    
+update  asiento a
+inner join (select asientoid,sum(haber) _haber from operacion group by asientoid) b on a.idasiento = b.asientoid
+set a.sh = b._haber;   
+
+select*from asiento order by idasiento;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -764,4 +884,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-13 23:50:21
+-- Dump completed on 2021-10-15  9:38:57
